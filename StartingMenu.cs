@@ -45,6 +45,7 @@ namespace SimplyKnowHau_Console
             Login();
             DisplayStart();
             SelectMenuOption();
+            ChoosenOption();
         }
 
         public static void DisplayLogo()
@@ -184,7 +185,7 @@ namespace SimplyKnowHau_Console
             } while (true);
         }
 
-        public static void RunOption()
+        public static void ChoosenOption()
         {
             switch (activePosition)
             {
