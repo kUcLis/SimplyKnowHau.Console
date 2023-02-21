@@ -13,6 +13,21 @@ namespace SimplyKnowHau_Console
         const ConsoleColor FG = ConsoleColor.DarkYellow;
         const ConsoleColor FG_ACTIVE = ConsoleColor.White;
 
+        private static readonly Dictionary<ConsoleKey, string> _stMenuOptions = new()
+        {
+            {ConsoleKey.D1, "Your Animals"},
+            {ConsoleKey.D2, "Make an apointment"},
+            {ConsoleKey.D3, "History of apointments"},
+            {ConsoleKey.D4, "?"},
+            {ConsoleKey.D5, "?"},
+            {ConsoleKey.D6, "?"},
+            {ConsoleKey.D7, "?"},
+            {ConsoleKey.Escape, "Quit"},
+        };
+        private static int activePosition = 1;
+
+
+
         static string simplyLogo = @"
                                                              
 ,---.o          |         |   /               |   |          
@@ -29,6 +44,7 @@ namespace SimplyKnowHau_Console
         {
             Login();
             DisplayStart();
+            SelectMenuOption();
         }
 
         public static void DisplayLogo()
@@ -75,15 +91,134 @@ namespace SimplyKnowHau_Console
                 }
             } while (true);
 
-           
+
         }
 
         public static void DisplayStart()
         {
+            Console.CursorVisible = false;
+
             DisplayLogo();
 
-            Console.ReadLine();
+            Console.SetCursorPosition((Console.WindowWidth - _stMenuOptions.ElementAt(1).Value.Length) / 2, Console.CursorTop);
+            Console.WriteLine($"Hi {userName}! What you want to do?");
+            Console.WriteLine();
 
+            for (int i = 1; i <= _stMenuOptions.Count; i++)
+            {
+                if (activePosition == i)
+                {
+                    Console.BackgroundColor = BG_ACTIVE;
+                    Console.ForegroundColor = FG_ACTIVE;
+                    if (i == _stMenuOptions.Count)
+                    {
+                        Console.SetCursorPosition((Console.WindowWidth - _stMenuOptions.ElementAt(1).Value.Length) / 2, Console.CursorTop);
+                        Console.Write($" ESC. ");
+                    }
+                    else
+                    {
+                        Console.SetCursorPosition((Console.WindowWidth - _stMenuOptions.ElementAt(1).Value.Length) / 2, Console.CursorTop);
+                        Console.Write($" {i}. ");
+                    }
+                    //Console.SetCursorPosition((Console.WindowWidth - _stMenuOptions.ElementAt(1).Value.Length) / 2, Console.CursorTop);
+                    Console.WriteLine("{0,-30}", _stMenuOptions.ElementAt(i - 1).Value);
+                    Console.BackgroundColor = BG;
+                    Console.ForegroundColor = FG;
+                }
+                else
+                {
+                    if (i == _stMenuOptions.Count)
+                    {
+                        Console.SetCursorPosition((Console.WindowWidth - _stMenuOptions.ElementAt(1).Value.Length) / 2, Console.CursorTop);
+                        Console.Write(" ESC.");
+                    }
+                    else
+                    {
+                        Console.SetCursorPosition((Console.WindowWidth - _stMenuOptions.ElementAt(1).Value.Length) / 2, Console.CursorTop);
+                        Console.Write($" {i}. ");
+                    }
+                    //Console.SetCursorPosition((Console.WindowWidth - _stMenuOptions.ElementAt(1).Value.Length) / 2, Console.CursorTop);
+                    Console.WriteLine(_stMenuOptions.ElementAt(i - 1).Value);
+                }
+            }
+
+
+        }
+
+        public static void SelectMenuOption()
+        {
+            do
+            {
+                ConsoleKeyInfo key = Console.ReadKey();
+                if (key.Key == ConsoleKey.UpArrow)
+                {
+                    activePosition = (activePosition > 1) ? --activePosition : _stMenuOptions.Count;
+                    DisplayStart();
+                }
+                else if (key.Key == ConsoleKey.DownArrow)
+                {
+                    activePosition = (activePosition % _stMenuOptions.Count) + 1;
+                    DisplayStart();
+                }
+                else if (key.Key == ConsoleKey.Escape)
+                {
+                    activePosition = _stMenuOptions.Count;
+                    break;
+                }
+                else if (key.Key == ConsoleKey.Enter)
+                {
+                    break;
+                }
+                else
+                {
+                    if (key.Key == ConsoleKey.D1) activePosition = 1;
+                    if (key.Key == ConsoleKey.D2) activePosition = 2;
+                    if (key.Key == ConsoleKey.D3) activePosition = 3;
+                    if (key.Key == ConsoleKey.D4) activePosition = 4;
+                    if (key.Key == ConsoleKey.D5) activePosition = 5;
+                    if (key.Key == ConsoleKey.D6) activePosition = 6;
+                    if (key.Key == ConsoleKey.D7) activePosition = 7;
+                    if (key.Key == ConsoleKey.D8) activePosition = 8;
+                    break;
+                }
+            } while (true);
+        }
+
+        public static void RunOption()
+        {
+            switch (activePosition)
+            {
+                case 1:
+
+                    Console.ReadKey();
+                    break;
+                case 2:
+
+                    break;
+                case 3:
+
+                    break;
+                case 4:
+
+
+                    break;
+                case 5:
+
+                    break;
+                case 6:
+
+                    break;
+                case 7:
+
+                    break;
+                default:
+                    ExitMessage();
+                    break;
+            }
+        }
+
+        public static void ExitMessage()
+        {
 
         }
 
