@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimplyKnowyHau.Console", "SimplyKnowyHau.Console.csproj", "{C0E32C31-77B6-475D-B7C6-11C9B9AEBB5A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimplyKnowHau_Console", "SimplyKnowHau_Console.csproj", "{C0E32C31-77B6-475D-B7C6-11C9B9AEBB5A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
