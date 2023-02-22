@@ -13,32 +13,22 @@ namespace SimplyKnowHau_Console
         const ConsoleColor FG = ConsoleColor.DarkYellow;
         const ConsoleColor FG_ACTIVE = ConsoleColor.White;
 
-        private static readonly Dictionary<ConsoleKey, string> _stMenuOptions = new()
-        {
-            {ConsoleKey.D1, "Your Animals"},
-            {ConsoleKey.D2, "Make an apointment"},
-            {ConsoleKey.D3, "History of apointments"},
-            {ConsoleKey.D4, "?"},
-            {ConsoleKey.D5, "?"},
-            {ConsoleKey.D6, "?"},
-            {ConsoleKey.D7, "?"},
-            {ConsoleKey.Escape, "Quit"},
-        };
+        
         private static int activePosition = 1;
 
+        private static string? welcomeMessage = "Welcome user! Give me your name:";
 
 
-        
 
         public static string? userName = string.Empty;
 
         // Start aplikacji, sprawdzenie Usera, Wyświetlenie menu
-        public static void Starts()
+        public static void Starts(Dictionary<ConsoleKey,string> dictionary)
         {
             Login();
-            DisplayStart();
-            SelectMenuOption();
-            ChoosenOption();
+            DisplayStart(dictionary);
+            SelectMenuOption(dictionary);
+            ChoosenOption(dictionary);
         }
 
         
@@ -49,7 +39,7 @@ namespace SimplyKnowHau_Console
             if (userName == string.Empty)
             {
 
-                string welcomeMessage = "Welcome user! Give me your name:";
+                
                 Console.SetCursorPosition((Console.WindowWidth - welcomeMessage.Length) / 2, Console.CursorTop);
                 Console.WriteLine(welcomeMessage);
 
@@ -80,75 +70,75 @@ namespace SimplyKnowHau_Console
 
         }
 
-        public static void DisplayStart()
+        public static void DisplayStart(Dictionary<ConsoleKey,string> dictionary)
         {
             Console.CursorVisible = false;
 
             Logo.DisplayLogo();
 
-            Console.SetCursorPosition((Console.WindowWidth - _stMenuOptions.ElementAt(1).Value.Length) / 2, Console.CursorTop);
+            Console.SetCursorPosition((Console.WindowWidth - welcomeMessage.Length) / 2, Console.CursorTop);
             Console.WriteLine($"Hi {userName}! What you want to do?");
             Console.WriteLine();
 
-            for (int i = 1; i <= _stMenuOptions.Count; i++)
+            for (int i = 1; i <= dictionary.Count; i++)
             {
                 if (activePosition == i)
                 {
                     Console.BackgroundColor = BG_ACTIVE;
                     Console.ForegroundColor = FG_ACTIVE;
-                    if (i == _stMenuOptions.Count)
+                    if (i == dictionary.Count)
                     {
-                        Console.SetCursorPosition((Console.WindowWidth - _stMenuOptions.ElementAt(1).Value.Length) / 2, Console.CursorTop);
+                        Console.SetCursorPosition((Console.WindowWidth - welcomeMessage.Length) / 2, Console.CursorTop);
                         Console.Write($" ESC. ");
                     }
                     else
                     {
-                        Console.SetCursorPosition((Console.WindowWidth - _stMenuOptions.ElementAt(1).Value.Length) / 2, Console.CursorTop);
+                        Console.SetCursorPosition((Console.WindowWidth - welcomeMessage.Length) / 2, Console.CursorTop);
                         Console.Write($" {i}. ");
                     }
                     //Console.SetCursorPosition((Console.WindowWidth - _stMenuOptions.ElementAt(1).Value.Length) / 2, Console.CursorTop);
-                    Console.WriteLine("{0,-30}", _stMenuOptions.ElementAt(i - 1).Value);
+                    Console.WriteLine("{0,-30}", dictionary.ElementAt(i - 1).Value);
                     Console.BackgroundColor = BG;
                     Console.ForegroundColor = FG;
                 }
                 else
                 {
-                    if (i == _stMenuOptions.Count)
+                    if (i == dictionary.Count)
                     {
-                        Console.SetCursorPosition((Console.WindowWidth - _stMenuOptions.ElementAt(1).Value.Length) / 2, Console.CursorTop);
+                        Console.SetCursorPosition((Console.WindowWidth - welcomeMessage.Length) / 2, Console.CursorTop);
                         Console.Write(" ESC.");
                     }
                     else
                     {
-                        Console.SetCursorPosition((Console.WindowWidth - _stMenuOptions.ElementAt(1).Value.Length) / 2, Console.CursorTop);
+                        Console.SetCursorPosition((Console.WindowWidth - welcomeMessage.Length) / 2, Console.CursorTop);
                         Console.Write($" {i}. ");
                     }
                     //Console.SetCursorPosition((Console.WindowWidth - _stMenuOptions.ElementAt(1).Value.Length) / 2, Console.CursorTop);
-                    Console.WriteLine(_stMenuOptions.ElementAt(i - 1).Value);
+                    Console.WriteLine(dictionary.ElementAt(i - 1).Value);
                 }
             }
 
 
         }
 
-        public static void SelectMenuOption()
+        public static void SelectMenuOption(Dictionary<ConsoleKey, string> dictionary)
         {
             do
             {
                 ConsoleKeyInfo key = Console.ReadKey();
                 if (key.Key == ConsoleKey.UpArrow)
                 {
-                    activePosition = (activePosition > 1) ? --activePosition : _stMenuOptions.Count;
-                    DisplayStart();
+                    activePosition = (activePosition > 1) ? --activePosition : dictionary.Count;
+                    DisplayStart(dictionary);
                 }
                 else if (key.Key == ConsoleKey.DownArrow)
                 {
-                    activePosition = (activePosition % _stMenuOptions.Count) + 1;
-                    DisplayStart();
+                    activePosition = (activePosition % dictionary.Count) + 1;
+                    DisplayStart(dictionary);
                 }
                 else if (key.Key == ConsoleKey.Escape)
                 {
-                    activePosition = _stMenuOptions.Count;
+                    activePosition = dictionary.Count;
                     break;
                 }
                 else if (key.Key == ConsoleKey.Enter)
@@ -170,45 +160,82 @@ namespace SimplyKnowHau_Console
             } while (true);
         }
 
-        public static void ChoosenOption()
+        public static void ChoosenOption(Dictionary<ConsoleKey, string> dictionary)
         {
-            switch (activePosition)
+
+            if (dictionary == Dictionaries.stMenuOptions)
             {
-                case 1:
+                switch (activePosition)
+                {
+                    case 1:
 
-                    Console.ReadKey();
-                    break;
-                case 2:
+                        Starts(Dictionaries.AnimalMenuOptions);
+                        break;
+                    case 2:
 
-                    break;
-                case 3:
+                        break;
+                    case 3:
 
-                    break;
-                case 4:
+                        break;
+                    case 4:
 
 
-                    break;
-                case 5:
+                        break;
+                    case 5:
 
-                    break;
-                case 6:
+                        break;
+                    case 6:
 
-                    break;
-                case 7:
+                        break;
+                    case 7:
 
-                    break;
-                default:
-                    ExitMessage();
-                    break;
+                        break;
+                    default:
+                        Exit(dictionary);
+                        break;
+                }
             }
+            if (dictionary == Dictionaries.AnimalMenuOptions)
+            {
+                switch (activePosition)
+                {
+                    case 1:
+
+                        Starts(Dictionaries.stMenuOptions);
+                        break;
+                    case 2:
+
+                        break;
+                    case 3:
+
+                        break;
+                    case 4:
+
+
+                        break;
+                    case 5:
+
+                        break;
+                    case 6:
+
+                        break;
+                    case 7:
+
+                        break;
+                    default:
+                        Exit(dictionary);
+                        break;
+                }
+            }
+
         }
 
-        public static void ExitMessage()
+        public static void Exit(Dictionary<ConsoleKey, string> dictionary)
         {
             Logo.DisplayLogo();
 
 
-            Console.SetCursorPosition((Console.WindowWidth - _stMenuOptions.ElementAt(1).Value.Length) / 2, Console.CursorTop);
+            Console.SetCursorPosition((Console.WindowWidth - welcomeMessage.Length) / 2, Console.CursorTop);
             Console.WriteLine("You really want to quit? (Y/N)");
 
             do
@@ -216,13 +243,13 @@ namespace SimplyKnowHau_Console
                 ConsoleKeyInfo key = Console.ReadKey();
                 if (key.Key == ConsoleKey.N)
                 {
-                    Starts();
+                    Starts(dictionary);
                     break;
                 }
                 else if (key.Key == ConsoleKey.Y)
                 {
                     Logo.DisplayLogo();
-                    Console.SetCursorPosition((Console.WindowWidth - _stMenuOptions.ElementAt(1).Value.Length) / 2, Console.CursorTop);
+                    Console.SetCursorPosition((Console.WindowWidth - welcomeMessage.Length) / 2, Console.CursorTop);
                     Console.WriteLine($"Bye {userName}");
                     Console.ReadLine();
                     break;

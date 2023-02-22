@@ -15,7 +15,7 @@ namespace SimplyKnowHau_Console
         {
 
 
-            StartingMenu.Starts();
+            StartingMenu.Starts(Dictionaries.stMenuOptions);
 
 
         }

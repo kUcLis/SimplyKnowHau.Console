@@ -14,17 +14,7 @@ namespace SimplyKnowHau_Console
         const ConsoleColor FG = ConsoleColor.DarkYellow;
         const ConsoleColor FG_ACTIVE = ConsoleColor.White;
 
-        private static readonly Dictionary<ConsoleKey, string> _stMenuOptions = new()
-        {
-            {ConsoleKey.D1, "Add new animal"},
-            {ConsoleKey.D2, "Make an apointment"},
-            {ConsoleKey.D3, "History of apointments"},
-            {ConsoleKey.D4, "?"},
-            {ConsoleKey.D5, "?"},
-            {ConsoleKey.D6, "?"},
-            {ConsoleKey.D7, "?"},
-            {ConsoleKey.Escape, "Quit"},
-        };
+        
         private static int activePosition = 1;
 
 
