@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimplyKnowyHau.Console", "SimplyKnowyHau.Console.csproj", "{C0E32C31-77B6-475D-B7C6-11C9B9AEBB5A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimplyKnowHau_Console", "SimplyKnowHau_Console.csproj", "{C0E32C31-77B6-475D-B7C6-11C9B9AEBB5A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimplyKnowHau_LogicAndData", "..\SimplyKnowHau_LogicAndData\SimplyKnowHau_LogicAndData.csproj", "{F32B3665-92D3-4642-8014-C248125873DF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{C0E32C31-77B6-475D-B7C6-11C9B9AEBB5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0E32C31-77B6-475D-B7C6-11C9B9AEBB5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C0E32C31-77B6-475D-B7C6-11C9B9AEBB5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F32B3665-92D3-4642-8014-C248125873DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F32B3665-92D3-4642-8014-C248125873DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F32B3665-92D3-4642-8014-C248125873DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F32B3665-92D3-4642-8014-C248125873DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,4 +1,4 @@
-﻿namespace SimplyKnowyHau.Console
+﻿namespace SimplyKnowHau_LogicAndData
 {
     internal class Program
     {
