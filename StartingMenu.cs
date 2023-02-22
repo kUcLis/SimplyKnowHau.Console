@@ -50,8 +50,10 @@ namespace SimplyKnowHau_Console
 
         public static void DisplayLogo()
         {
+            
 
             Console.Clear();
+            Console.SetCursorPosition(0, 0);
             Console.ForegroundColor = FG;
             Console.WriteLine(simplyLogo);
             Console.ForegroundColor = ConsoleColor.DarkGreen;
@@ -64,33 +66,36 @@ namespace SimplyKnowHau_Console
         public static void Login()
         {
             DisplayLogo();
-
-            string welcomeMessage = "Welcome user! Give me your name:";
-            Console.SetCursorPosition((Console.WindowWidth - welcomeMessage.Length) / 2, Console.CursorTop);
-            Console.WriteLine(welcomeMessage);
-
-            do
+            if (userName == string.Empty)
             {
+
+                string welcomeMessage = "Welcome user! Give me your name:";
                 Console.SetCursorPosition((Console.WindowWidth - welcomeMessage.Length) / 2, Console.CursorTop);
-                userName = Console.ReadLine();
-                if (userName == string.Empty)
+                Console.WriteLine(welcomeMessage);
+
+                do
                 {
                     Console.SetCursorPosition((Console.WindowWidth - welcomeMessage.Length) / 2, Console.CursorTop);
-                    Console.ForegroundColor = ConsoleColor.DarkRed;
-                    Console.WriteLine("First, give me your name!");
-                    Console.ForegroundColor = FG;
-                }
-                else if (userName == "Tutaj metoda z klasy czy cos zwrocila")
-                {
-                    // metoda z klasy user szukająca użytkownika
-                    break;
-                }
-                else // tutaj jesli nowy uzytkownik
-                {
-                    Console.WriteLine($"Hi {userName}! Remember that username, you were added to our database!");
-                    break; // Dodać metodą dodająca użytkownika, Password for fun? 
-                }
-            } while (true);
+                    userName = Console.ReadLine();
+                    if (userName == string.Empty)
+                    {
+                        Console.SetCursorPosition((Console.WindowWidth - welcomeMessage.Length) / 2, Console.CursorTop);
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.WriteLine("First, give me your name!");
+                        Console.ForegroundColor = FG;
+                    }
+                    else if (userName == "Tutaj metoda z klasy czy cos zwrocila")
+                    {
+                        // metoda z klasy user szukająca użytkownika
+                        break;
+                    }
+                    else // tutaj jesli nowy uzytkownik
+                    {
+                        Console.WriteLine($"Hi {userName}! Remember that username, you were added to our database!");
+                        break; // Dodać metodą dodająca użytkownika, Password for fun? 
+                    }
+                } while (true);
+            }
 
 
         }
@@ -220,6 +225,29 @@ namespace SimplyKnowHau_Console
 
         public static void ExitMessage()
         {
+            DisplayLogo();
+
+
+            Console.SetCursorPosition((Console.WindowWidth - _stMenuOptions.ElementAt(1).Value.Length) / 2, Console.CursorTop);
+            Console.WriteLine("You really want to quit? (Y/N)");
+
+            do
+            {
+                ConsoleKeyInfo key = Console.ReadKey();
+                if (key.Key == ConsoleKey.N)
+                {
+                    Starts();
+                    break;
+                }
+                else if (key.Key == ConsoleKey.Y)
+                {
+                    DisplayLogo();
+                    Console.SetCursorPosition((Console.WindowWidth - _stMenuOptions.ElementAt(1).Value.Length) / 2, Console.CursorTop);
+                    Console.WriteLine($"Bye {userName}");
+                    Console.ReadLine();
+                    break;
+                }
+            } while (true) ;
 
         }
 
