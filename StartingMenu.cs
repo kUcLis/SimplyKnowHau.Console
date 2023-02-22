@@ -28,14 +28,7 @@ namespace SimplyKnowHau_Console
 
 
 
-        static string simplyLogo = @"
-                                                             
-,---.o          |         |   /               |   |          
-`---..,-.-.,---.|    ,   .|__/ ,---.,---.. . .|---|,---..   .
-    ||| | ||   ||    |   ||  \ |   ||   || | ||   |,---||   |
-`---'`` ' '|---'`---'`---|`   ``   '`---'`-'-'`   '`---^`---'
-           |         `---'                                   
-";
+        
 
         public static string? userName = string.Empty;
 
@@ -48,24 +41,11 @@ namespace SimplyKnowHau_Console
             ChoosenOption();
         }
 
-        public static void DisplayLogo()
-        {
-            
-
-            Console.Clear();
-            Console.SetCursorPosition(0, 0);
-            Console.ForegroundColor = FG;
-            Console.WriteLine(simplyLogo);
-            Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.WriteLine("Made entirely by kUcLis");
-            Console.ForegroundColor = FG;
-            Console.WriteLine();
-
-        }
+        
 
         public static void Login()
         {
-            DisplayLogo();
+            Logo.DisplayLogo();
             if (userName == string.Empty)
             {
 
@@ -104,7 +84,7 @@ namespace SimplyKnowHau_Console
         {
             Console.CursorVisible = false;
 
-            DisplayLogo();
+            Logo.DisplayLogo();
 
             Console.SetCursorPosition((Console.WindowWidth - _stMenuOptions.ElementAt(1).Value.Length) / 2, Console.CursorTop);
             Console.WriteLine($"Hi {userName}! What you want to do?");
@@ -225,7 +205,7 @@ namespace SimplyKnowHau_Console
 
         public static void ExitMessage()
         {
-            DisplayLogo();
+            Logo.DisplayLogo();
 
 
             Console.SetCursorPosition((Console.WindowWidth - _stMenuOptions.ElementAt(1).Value.Length) / 2, Console.CursorTop);
@@ -241,7 +221,7 @@ namespace SimplyKnowHau_Console
                 }
                 else if (key.Key == ConsoleKey.Y)
                 {
-                    DisplayLogo();
+                    Logo.DisplayLogo();
                     Console.SetCursorPosition((Console.WindowWidth - _stMenuOptions.ElementAt(1).Value.Length) / 2, Console.CursorTop);
                     Console.WriteLine($"Bye {userName}");
                     Console.ReadLine();
