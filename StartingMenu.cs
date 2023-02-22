@@ -201,7 +201,7 @@ namespace SimplyKnowHau_Console
                 {
                     case 1:
 
-                        Starts(Dictionaries.stMenuOptions);
+                        //Starts();
                         break;
                     case 2:
 
@@ -234,27 +234,33 @@ namespace SimplyKnowHau_Console
         {
             Logo.DisplayLogo();
 
-
-            Console.SetCursorPosition((Console.WindowWidth - welcomeMessage.Length) / 2, Console.CursorTop);
-            Console.WriteLine("You really want to quit? (Y/N)");
-
-            do
+            if (dictionary == Dictionaries.stMenuOptions)
             {
-                ConsoleKeyInfo key = Console.ReadKey();
-                if (key.Key == ConsoleKey.N)
+                Console.SetCursorPosition((Console.WindowWidth - welcomeMessage.Length) / 2, Console.CursorTop);
+                Console.WriteLine("You really want to quit? (Y/N)");
+
+                do
                 {
-                    Starts(dictionary);
-                    break;
-                }
-                else if (key.Key == ConsoleKey.Y)
-                {
-                    Logo.DisplayLogo();
-                    Console.SetCursorPosition((Console.WindowWidth - welcomeMessage.Length) / 2, Console.CursorTop);
-                    Console.WriteLine($"Bye {userName}");
-                    Console.ReadLine();
-                    break;
-                }
-            } while (true) ;
+                    ConsoleKeyInfo key = Console.ReadKey();
+                    if (key.Key == ConsoleKey.N)
+                    {
+                        Starts(dictionary);
+                        break;
+                    }
+                    else if (key.Key == ConsoleKey.Y)
+                    {
+                        Logo.DisplayLogo();
+                        Console.SetCursorPosition((Console.WindowWidth - welcomeMessage.Length) / 2, Console.CursorTop);
+                        Console.WriteLine($"Bye {userName}");
+                        Console.ReadLine();
+                        break;
+                    }
+                } while (true);
+            }
+            else
+            {
+                Starts(Dictionaries.stMenuOptions);
+            }
 
         }
 
