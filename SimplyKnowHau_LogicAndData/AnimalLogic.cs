@@ -1,6 +1,5 @@
 ﻿using SimplyKnowHau_LogicAndData.Model;
 
-
 namespace SimplyKnowHau_LogicAndData
 {
     public class AnimalLogic
@@ -56,6 +55,13 @@ namespace SimplyKnowHau_LogicAndData
             return ++_idCounter;
         }
 
+        //public static List<CardItem> AddAnimalCard()
+        //{
 
+
+
+
+
+        //}
     }
 }

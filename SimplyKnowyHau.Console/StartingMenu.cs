@@ -220,6 +220,8 @@ namespace SimplyKnowHau_Console
 
                         break;
                     case 7:
+                        break;
+                    case 8:
                         userName = String.Empty;
                         Starts(dictionary);
                         break;
@@ -230,34 +232,17 @@ namespace SimplyKnowHau_Console
             }
             if (dictionary == Dictionaries.AnimalMenuOptions)
             {
-                switch (activePosition)
+                if(activePosition == 1)
                 {
-                    case 1:
+                    CardMenu.AddCardAnimal(dictionary);
+                }
+                else if (activePosition == dictionary.Count) 
+                {
+                    Exit(dictionary);
+                }
+                else
+                {
 
-                        //Starts();
-                        break;
-                    case 2:
-
-                        break;
-                    case 3:
-
-                        break;
-                    case 4:
-
-
-                        break;
-                    case 5:
-
-                        break;
-                    case 6:
-
-                        break;
-                    case 7:
-
-                        break;
-                    default:
-                        Exit(Dictionaries.stMenuOptions);
-                        break;
                 }
             }
 

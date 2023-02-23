@@ -15,6 +15,7 @@ namespace SimplyKnowHau_Console
             {
                 case 1:
                     {
+                        stMenuOptions.Clear();
                         stMenuOptions.Add(new MenuItem(1, "Your Animals"));
                         stMenuOptions.Add(new MenuItem(2, "Make an apointment"));
                         stMenuOptions.Add(new MenuItem(3, "History of apointments"));
@@ -22,12 +23,13 @@ namespace SimplyKnowHau_Console
                         stMenuOptions.Add(new MenuItem(5, "?"));
                         stMenuOptions.Add(new MenuItem(6, "?"));
                         stMenuOptions.Add(new MenuItem(7, "?"));
-                        stMenuOptions.Add(new MenuItem(8, "?"));
+                        stMenuOptions.Add(new MenuItem(8, "Logout"));
                         stMenuOptions.Add(new MenuItem(9, "Quit"));
                         break;
                     }
                 case 2:
                     {
+                        AnimalMenuOptions.Clear();
                         AnimalMenuOptions = AnimalLogic.UserIdToMenu();
                         break;
                     }
