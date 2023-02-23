@@ -4,21 +4,9 @@ namespace SimplyKnowHau_Console
 {
     internal class Dictionaries
     {
-<<<<<<< HEAD
-        internal static readonly Dictionary<ConsoleKey, string> stMenuOptions = new()
-        {
-            {ConsoleKey.D1, "Your Animals"},
-            {ConsoleKey.D2, "Make an apointment"},
-            {ConsoleKey.D3, "History of apointments"},
-            {ConsoleKey.D4, "?"},
-            {ConsoleKey.D5, "?"},
-            {ConsoleKey.D6, "?"},
-            {ConsoleKey.D7, "Logout"},
-            {ConsoleKey.Escape, "Quit"},
-        };
-=======
+
         public static List<MenuItem> stMenuOptions = new();
->>>>>>> feature_animalmenu
+
 
 
 
