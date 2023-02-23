@@ -7,9 +7,6 @@ namespace SimplyKnowHau_Console
 
         public static List<MenuItem> stMenuOptions = new();
 
-
-
-
         public static List<MenuItem> AnimalMenuOptions = new();
 
         public Dictionaries(int id)

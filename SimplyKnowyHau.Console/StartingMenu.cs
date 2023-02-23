@@ -39,7 +39,7 @@ namespace SimplyKnowHau_Console
 
         
 
-        public static void Login(Dictionary<ConsoleKey,string> dictionary)
+        public static void Login(List<MenuItem> dictionary)
         {
             Logo.DisplayLogo();
             Console.CursorVisible = true;
