@@ -25,6 +25,9 @@
 	<None Update="Data\Appointments.json">
 		<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	</None>
+	  <None Update="Data\Species.json">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
   </ItemGroup>
 
 </Project>
