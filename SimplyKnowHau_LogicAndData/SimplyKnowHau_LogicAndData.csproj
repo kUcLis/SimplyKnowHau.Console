@@ -14,5 +14,17 @@
   <ItemGroup>
     <Folder Include="Data\" />
   </ItemGroup>
+	
+  <ItemGroup>
+	<None Update="Data\Animals.json">
+		<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	</None>
+	<None Update="Data\Users.json">
+		<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	</None>
+	<None Update="Data\Appointmets.json">
+		<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	</None>
+  </ItemGroup>
 
 </Project>

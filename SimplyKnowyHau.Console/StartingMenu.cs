@@ -1,8 +1,13 @@
-﻿using System;
+﻿using SimplyKnowHau_LogicAndData;
+using SimplyKnowHau_LogicAndData.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+
+
 
 namespace SimplyKnowHau_Console
 {
@@ -54,15 +59,16 @@ namespace SimplyKnowHau_Console
                         Console.WriteLine("First, give me your name!");
                         Console.ForegroundColor = FG;
                     }
-                    else if (userName == "Tutaj metoda z klasy czy cos zwrocila")
-                    {
-                        // metoda z klasy user szukająca użytkownika
-                        break;
-                    }
-                    else // tutaj jesli nowy uzytkownik
+                    else if (UserLogic.GetByName(userName).Name == "User")
                     {
                         Console.WriteLine($"Hi {userName}! Remember that username, you were added to our database!");
-                        break; // Dodać metodą dodająca użytkownika, Password for fun? 
+                        UserLogic.SetCurrentUser(UserLogic.AddUser(userName));
+                        break;
+                    }
+                    else 
+                    {
+                        UserLogic.SetCurrentUser(UserLogic.GetByName(userName));
+                        break; 
                     }
                 } while (true);
             }
