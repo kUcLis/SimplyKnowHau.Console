@@ -28,7 +28,7 @@ namespace SimplyKnowHau_Console
         public static string? userName = string.Empty;
 
         // Start aplikacji, sprawdzenie Usera, Wyświetlenie menu
-        public static void Starts(Dictionary<ConsoleKey,string> dictionary)
+        public static void Starts(List<MenuItem> dictionary)
         {
             Login();
             DisplayStart(dictionary);
@@ -76,7 +76,7 @@ namespace SimplyKnowHau_Console
 
         }
 
-        public static void DisplayStart(Dictionary<ConsoleKey,string> dictionary)
+        public static void DisplayStart(List<MenuItem> dictionary)
         {
             Console.CursorVisible = false;
 
@@ -103,7 +103,7 @@ namespace SimplyKnowHau_Console
                         Console.Write($" {i}. ");
                     }
                     //Console.SetCursorPosition((Console.WindowWidth - _stMenuOptions.ElementAt(1).Value.Length) / 2, Console.CursorTop);
-                    Console.WriteLine("{0,-30}", dictionary.ElementAt(i - 1).Value);
+                    Console.WriteLine("{0,-30}", dictionary.ElementAt(i - 1).MenuString);
                     Console.BackgroundColor = BG;
                     Console.ForegroundColor = FG;
                 }
@@ -120,14 +120,14 @@ namespace SimplyKnowHau_Console
                         Console.Write($" {i}. ");
                     }
                     //Console.SetCursorPosition((Console.WindowWidth - _stMenuOptions.ElementAt(1).Value.Length) / 2, Console.CursorTop);
-                    Console.WriteLine(dictionary.ElementAt(i - 1).Value);
+                    Console.WriteLine(dictionary.ElementAt(i - 1).MenuString);
                 }
             }
 
 
         }
 
-        public static void SelectMenuOption(Dictionary<ConsoleKey, string> dictionary)
+        public static void SelectMenuOption(List<MenuItem> dictionary)
         {
             do
             {
@@ -166,7 +166,7 @@ namespace SimplyKnowHau_Console
             } while (true);
         }
 
-        public static void ChoosenOption(Dictionary<ConsoleKey, string> dictionary)
+        public static void ChoosenOption(List<MenuItem> dictionary)
         {
 
             if (dictionary == Dictionaries.stMenuOptions)
@@ -174,7 +174,7 @@ namespace SimplyKnowHau_Console
                 switch (activePosition)
                 {
                     case 1:
-
+                        var dictionary2 = new Dictionaries(2);
                         Starts(Dictionaries.AnimalMenuOptions);
                         break;
                     case 2:
@@ -229,14 +229,14 @@ namespace SimplyKnowHau_Console
 
                         break;
                     default:
-                        Exit(dictionary);
+                        Exit(Dictionaries.stMenuOptions);
                         break;
                 }
             }
 
         }
 
-        public static void Exit(Dictionary<ConsoleKey, string> dictionary)
+        public static void Exit(List<MenuItem> dictionary)
         {
             Logo.DisplayLogo();
 
