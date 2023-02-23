@@ -1,0 +1,12 @@
+[
+  {
+    "Id": 1,
+    "UserId": 1,
+    "Name": "Pies",
+    "AnimalCategory": {
+      "Id": 1,
+      "Specie": "Pies"
+    },
+    "DateOfBirth": "2023-02-23"
+  }
+]
