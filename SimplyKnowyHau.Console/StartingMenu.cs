@@ -1,6 +1,7 @@
 ﻿using SimplyKnowHau_LogicAndData;
 using SimplyKnowHau_LogicAndData.Model;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -30,7 +31,7 @@ namespace SimplyKnowHau_Console
         // Start aplikacji, sprawdzenie Usera, Wyświetlenie menu
         public static void Starts(Dictionary<ConsoleKey,string> dictionary)
         {
-            Login();
+            Login(dictionary);
             DisplayStart(dictionary);
             SelectMenuOption(dictionary);
             ChoosenOption(dictionary);
@@ -38,9 +39,10 @@ namespace SimplyKnowHau_Console
 
         
 
-        public static void Login()
+        public static void Login(Dictionary<ConsoleKey,string> dictionary)
         {
             Logo.DisplayLogo();
+            Console.CursorVisible = true;
             if (userName == string.Empty)
             {
 
@@ -61,7 +63,31 @@ namespace SimplyKnowHau_Console
                     }
                     else if (UserLogic.GetByName(userName) == null)
                     {
-                        Console.WriteLine($"Hi {userName}! Remember that username, you were added to our database!");
+                        Logo.DisplayLogo();
+                        Console.SetCursorPosition((Console.WindowWidth - welcomeMessage.Length) / 2, Console.CursorTop);
+                        Console.WriteLine($"Hi {userName}!");
+                        Console.SetCursorPosition((Console.WindowWidth - welcomeMessage.Length) / 2, Console.CursorTop);
+                        Console.WriteLine("Remember that username, you were added to our database!");
+                        Console.WriteLine();
+                        Console.SetCursorPosition((Console.WindowWidth - welcomeMessage.Length) / 2, Console.CursorTop);
+                        Console.WriteLine("Are you happy with your choice? (Y/N)");
+                        Console.CursorVisible = false;
+                        do
+                        {
+                            ConsoleKeyInfo key = Console.ReadKey();
+                            if (key.Key == ConsoleKey.N)
+                            {
+                                userName = String.Empty;
+                                Starts(dictionary);
+                                break;
+                            }
+                            else if (key.Key == ConsoleKey.Y)
+                            {
+                                
+                                break;
+                            }
+                        } while (true);
+
                         UserLogic.SetCurrentUser(UserLogic.AddUser(userName));
                         break;
                     }
@@ -194,7 +220,8 @@ namespace SimplyKnowHau_Console
 
                         break;
                     case 7:
-
+                        userName = String.Empty;
+                        Starts(dictionary);
                         break;
                     default:
                         Exit(dictionary);

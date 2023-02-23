@@ -16,7 +16,7 @@ namespace SimplyKnowHau_Console
             {ConsoleKey.D4, "?"},
             {ConsoleKey.D5, "?"},
             {ConsoleKey.D6, "?"},
-            {ConsoleKey.D7, "?"},
+            {ConsoleKey.D7, "Logout"},
             {ConsoleKey.Escape, "Quit"},
         };
 
