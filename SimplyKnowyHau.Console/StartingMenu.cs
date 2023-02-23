@@ -59,7 +59,7 @@ namespace SimplyKnowHau_Console
                         Console.WriteLine("First, give me your name!");
                         Console.ForegroundColor = FG;
                     }
-                    else if (UserLogic.GetByName(userName).Name == "User")
+                    else if (UserLogic.GetByName(userName) == null)
                     {
                         Console.WriteLine($"Hi {userName}! Remember that username, you were added to our database!");
                         UserLogic.SetCurrentUser(UserLogic.AddUser(userName));

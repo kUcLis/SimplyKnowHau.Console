@@ -18,7 +18,6 @@ namespace SimplyKnowHau_LogicAndData.Model
 
         public DateTime DateOfBirth { get; set; }
 
-        public List<Appointment>? Appointments { get; set; }
 
         public Animal(int id, int userId, string name, Species animalCategory, DateTime dateOfBirth)
         {
@@ -29,16 +28,5 @@ namespace SimplyKnowHau_LogicAndData.Model
             DateOfBirth = dateOfBirth;
         }
 
-
-
-        public Animal(int id, int userId, string name, Species animalCategory, DateTime dateOfBirth, List<Appointment> appointments)
-        {
-            Id = id;
-            UserId = userId;
-            Name = name;
-            AnimalCategory = animalCategory;
-            DateOfBirth = dateOfBirth;
-            Appointments = appointments;
-        }
     }
 }

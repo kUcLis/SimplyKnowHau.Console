@@ -32,11 +32,8 @@ namespace SimplyKnowHau_LogicAndData
 
         public static User GetByName(string name)
         {
-            if (_users != null)
-                return _users.FirstOrDefault(c => c.Name == name);
-            else
-                return new User(0, "User");
 
+           return _users.FirstOrDefault(c => c.Name == name);
 
         }
         public static User SetCurrentUser(User? user)

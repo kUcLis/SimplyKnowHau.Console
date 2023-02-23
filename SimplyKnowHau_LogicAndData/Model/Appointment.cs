@@ -21,6 +21,16 @@ namespace SimplyKnowHau_LogicAndData.Model
 
         public string Recipe { get; set; }
 
+        public Appointment(int id, int userId, int animalId, DateTime date)
+        {
+            Id = id;
+            UserId = userId;
+            AnimalId = animalId;
+            Date = date;
+        }
+
+
+
         public Appointment(int id, int userId, int animalId, DateTime date, string description, string recipe)
         {
             Id = id;

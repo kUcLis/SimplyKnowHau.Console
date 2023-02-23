@@ -10,5 +10,17 @@
   <ItemGroup>
     <ProjectReference Include="..\SimplyKnowHau_LogicAndData\SimplyKnowHau_LogicAndData.csproj" />
   </ItemGroup>
+	
+	<ItemGroup>
+		<None Update="Data\Animals.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="Data\Users.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="Data\Appointments.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
 
 </Project>
