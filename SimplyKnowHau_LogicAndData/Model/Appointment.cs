@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,18 +18,9 @@ namespace SimplyKnowHau_LogicAndData.Model
 
         public DateTime Date { get; set; }
 
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
-        public string Recipe { get; set; }
-
-        public Appointment(int id, int userId, int animalId, DateTime date)
-        {
-            Id = id;
-            UserId = userId;
-            AnimalId = animalId;
-            Date = date;
-        }
-
+        public string? Recipe { get; set; }
 
 
         public Appointment(int id, int userId, int animalId, DateTime date, string description, string recipe)

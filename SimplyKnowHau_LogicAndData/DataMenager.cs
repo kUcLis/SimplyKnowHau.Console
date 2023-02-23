@@ -20,7 +20,6 @@ namespace SimplyKnowHau_LogicAndData
         {
             var filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", fileName);
             string itemsSerialized = File.ReadAllText(filePath);
-            Console.WriteLine(itemsSerialized);
             return JsonConvert.DeserializeObject<List<T>>(itemsSerialized) ?? new List<T>();
         }
 
