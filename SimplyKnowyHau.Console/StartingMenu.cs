@@ -277,6 +277,7 @@ namespace SimplyKnowHau_Console
             }
             else
             {
+                activePosition= 1;
                 Starts(Dictionaries.stMenuOptions);
             }
 
