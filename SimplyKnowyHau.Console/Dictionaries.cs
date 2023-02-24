@@ -8,6 +8,7 @@ namespace SimplyKnowHau_Console
         public static List<MenuItem> stMenuOptions = new();
 
         public static List<MenuItem> AnimalMenuOptions = new();
+        public static List<MenuItem> shortMenu = new();
 
         public Dictionaries(int id)
         {
@@ -32,6 +33,15 @@ namespace SimplyKnowHau_Console
                         AnimalMenuOptions.Clear();
                         AnimalMenuOptions = AnimalLogic.UserIdToMenu();
                         break;
+                    }
+                case 3:
+                    {
+                        shortMenu.Clear();
+                        shortMenu.Add(new MenuItem(1, "Make an appointment for that animal"));
+                        shortMenu.Add(new MenuItem(2, "Edit animal"));
+                        shortMenu.Add(new MenuItem(3, "Back"));
+                        break;
+
                     }
                  
             }

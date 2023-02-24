@@ -43,7 +43,7 @@ namespace SimplyKnowHau_LogicAndData
                 }
                 else
                 {
-                    menu.Add(new MenuItem(i,$"{animalList.ElementAt(i-2).AnimalCategory.Specie}: {animalList.ElementAt(i-2).Name}, Age:{DateTime.Now.Year - animalList.ElementAt(i-2).DateOfBirth.Year}"));
+                    menu.Add(new MenuItem(animalList.ElementAt(i-2).Id,$"{animalList.ElementAt(i-2).AnimalCategory.Specie}: {animalList.ElementAt(i-2).Name}, Age:{AnimalLogic.Age(animalList.ElementAt(i-2))}"));
                 }
             }
 
@@ -55,6 +55,16 @@ namespace SimplyKnowHau_LogicAndData
             return ++_idCounter;
         }
 
+        public static int Age(Animal animal)
+        {
+            int age = DateTime.Now.Year - animal.DateOfBirth.Year;
+            if(DateTime.Now.Month < animal.DateOfBirth.Month)
+            {
+                age--;
+            }
+
+            return age;
+        }
         //public static List<CardItem> AddAnimalCard()
         //{
 

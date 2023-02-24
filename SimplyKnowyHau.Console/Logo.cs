@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SimplyKnowHau_LogicAndData.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -34,6 +35,29 @@ namespace SimplyKnowHau_Console
             Console.WriteLine("Made entirely by kUcLis");
             Console.ForegroundColor = FG;
             Console.WriteLine();
+
+        }
+
+        public static void DisplayLogoAndCardAnimal(Animal animal)
+        {
+            var cardlist = new CardMenu(animal);
+
+            Logo.DisplayLogo();
+
+            for (int i = 0; i < CardMenu.cardItemsAnimal.Count; i++)
+            {
+
+                Console.SetCursorPosition((Console.WindowWidth - 50) / 2, Console.CursorTop);
+                Console.Write($"{CardMenu.cardItemsAnimal.ElementAt(i).CardString}");
+                Console.ForegroundColor = FG_ACTIVE;
+                Console.Write($"{CardMenu.cardItemsAnimal.ElementAt(i).CardContent}");
+                Console.WriteLine();
+                Console.ForegroundColor = FG;
+            }
+
+            
+
+
 
         }
 

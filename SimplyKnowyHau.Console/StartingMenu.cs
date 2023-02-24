@@ -31,6 +31,7 @@ namespace SimplyKnowHau_Console
         // Start aplikacji, sprawdzenie Usera, Wyświetlenie menu
         public static void Starts(List<MenuItem> dictionary)
         {
+            activePosition = 1;
             Login(dictionary);
             DisplayStart(dictionary);
             SelectMenuOption(dictionary);
@@ -105,8 +106,9 @@ namespace SimplyKnowHau_Console
         public static void DisplayStart(List<MenuItem> dictionary)
         {
             Console.CursorVisible = false;
-
+            
             Logo.DisplayLogo();
+            
 
             Console.SetCursorPosition((Console.WindowWidth - welcomeMessage.Length) / 2, Console.CursorTop);
             Console.WriteLine($"Hi {userName}! What you want to do?");
@@ -225,7 +227,7 @@ namespace SimplyKnowHau_Console
                         userName = String.Empty;
                         Starts(dictionary);
                         break;
-                    default:
+                    case 9:
                         Exit(dictionary);
                         break;
                 }
@@ -234,15 +236,21 @@ namespace SimplyKnowHau_Console
             {
                 if(activePosition == 1)
                 {
+                    activePosition = 1;
                     CardMenu.AddCardAnimal(dictionary);
                 }
                 else if (activePosition == dictionary.Count) 
                 {
+                    activePosition = 1;
                     Exit(dictionary);
+                }
+                else if (dictionary.ElementAt(activePosition-1).MenuString != "No more animals to show")
+                {
+                    CardMenu.AnimalCard(AnimalLogic.GetById(dictionary.ElementAt(activePosition - 1).Id));
                 }
                 else
                 {
-
+                    Starts(dictionary);
                 }
             }
 
@@ -270,20 +278,139 @@ namespace SimplyKnowHau_Console
                         Logo.DisplayLogo();
                         Console.SetCursorPosition((Console.WindowWidth - welcomeMessage.Length) / 2, Console.CursorTop);
                         Console.WriteLine($"Bye {userName}");
+                        activePosition = 0;
                         Console.ReadLine();
+                        
+                        Environment.Exit(0);
                         break;
                     }
                 } while (true);
+
+            }
+            else if (dictionary == Dictionaries.AnimalMenuOptions)
+            {
+                Starts(Dictionaries.stMenuOptions);
             }
             else
             {
-                activePosition= 1;
-                Starts(Dictionaries.stMenuOptions);
+                var dictionary2 = new Dictionaries(2);
+                Starts(Dictionaries.AnimalMenuOptions);
             }
 
         }
+        // Short Menus
+        public static void StartsShort(List<MenuItem> dictionary, object item)
+        {
+            activePosition = 1;
+            DisplayStartShort(dictionary, item);
+            SelectShortMenuOption(dictionary, item);
+            ChoosenShortOption(dictionary, item);
+
+        }
+        public static void DisplayStartShort(List<MenuItem> dictionary, object item)
+        {
+            Console.CursorVisible = false;
+
+            Logo.DisplayLogoAndCardAnimal((Animal)item);
+
+            Console.SetCursorPosition((Console.WindowWidth - welcomeMessage.Length) / 2, Console.CursorTop);
+            Console.WriteLine();
+
+            for (int i = 1; i <= dictionary.Count; i++)
+            {
+                if (activePosition == i)
+                {
+                    Console.BackgroundColor = BG_ACTIVE;
+                    Console.ForegroundColor = FG_ACTIVE;
+                    if (i == dictionary.Count)
+                    {
+                        Console.SetCursorPosition((Console.WindowWidth - welcomeMessage.Length) / 2, Console.CursorTop);
+                        Console.Write($" ESC. ");
+                    }
+                    else
+                    {
+                        Console.SetCursorPosition((Console.WindowWidth - welcomeMessage.Length) / 2, Console.CursorTop);
+                        Console.Write($" {i}. ");
+                    }
+                    //Console.SetCursorPosition((Console.WindowWidth - _stMenuOptions.ElementAt(1).Value.Length) / 2, Console.CursorTop);
+                    Console.WriteLine("{0,-30}", dictionary.ElementAt(i - 1).MenuString);
+                    Console.BackgroundColor = BG;
+                    Console.ForegroundColor = FG;
+                }
+                else
+                {
+                    if (i == dictionary.Count)
+                    {
+                        Console.SetCursorPosition((Console.WindowWidth - welcomeMessage.Length) / 2, Console.CursorTop);
+                        Console.Write(" ESC.");
+                    }
+                    else
+                    {
+                        Console.SetCursorPosition((Console.WindowWidth - welcomeMessage.Length) / 2, Console.CursorTop);
+                        Console.Write($" {i}. ");
+                    }
+                    //Console.SetCursorPosition((Console.WindowWidth - _stMenuOptions.ElementAt(1).Value.Length) / 2, Console.CursorTop);
+                    Console.WriteLine(dictionary.ElementAt(i - 1).MenuString);
+                }
+            }
 
 
+        }
+       
+        public static void SelectShortMenuOption(List<MenuItem> dictionary, object item)
+        {
+            do
+            {
+                ConsoleKeyInfo key = Console.ReadKey();
+                if (key.Key == ConsoleKey.UpArrow)
+                {
+                    activePosition = (activePosition > 1) ? --activePosition : dictionary.Count;
+                    DisplayStartShort(dictionary, item);
+                }
+                else if (key.Key == ConsoleKey.DownArrow)
+                {
+                    activePosition = (activePosition % dictionary.Count) + 1;
+                    DisplayStartShort(dictionary, item);
+                }
+                else if (key.Key == ConsoleKey.Escape)
+                {
+                    activePosition = dictionary.Count;
+                    break;
+                }
+                else if (key.Key == ConsoleKey.Enter)
+                {
+                    break;
+                }
+                else
+                {
+                    if (key.Key == ConsoleKey.D1) activePosition = 1;
+                    if (key.Key == ConsoleKey.D2) activePosition = 2;
+                    if (key.Key == ConsoleKey.D3) activePosition = 3;
+                    break;
+                }
+            } while (true);
+        }
+
+       
+        public static void ChoosenShortOption(List<MenuItem> dictionary, object item)
+        {
+
+             switch (activePosition)
+                {
+                    case 1:
+                        var dictionary2 = new Dictionaries(2);
+                        Starts(Dictionaries.AnimalMenuOptions);
+                        break;
+                    case 2:
+                        EditCard.EditCardAnimal(dictionary, (Animal)item);
+                        break;
+                    default:
+                        Exit(dictionary);
+                        break;
+             }
+        }
+            
+            
 
 
 
