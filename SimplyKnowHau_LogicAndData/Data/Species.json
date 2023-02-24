@@ -1,6 +1,10 @@
 [
   {
     "Id": 1,
-    "Name": "Pies"
+    "Specie": "Dog"
+  },
+  {
+    "Id": 2,
+    "Specie": "Cat"
   }
 ]
