@@ -61,6 +61,60 @@ namespace SimplyKnowHau_Console
 
         }
 
+        public static void DisplayLogoAndCardAppointment(Appointment appointment)
+        {
+            var cardlist = new CardMenu(appointment);
+
+            Logo.DisplayLogo();
+
+            for (int i = 0; i < CardMenu.cardItemsAppointment.Count; i++)
+            {
+
+                Console.SetCursorPosition((Console.WindowWidth - 50) / 2, Console.CursorTop);
+                Console.Write($"{CardMenu.cardItemsAppointment.ElementAt(i).CardString}");
+                Console.ForegroundColor = FG_ACTIVE;
+                while (true)
+                {
+                    if (CardMenu.cardItemsAppointment.ElementAt(i).CardContent.Length > 60)
+                    {
+
+                        Console.WriteLine();
+                        Console.SetCursorPosition((Console.WindowWidth - 50) / 2, Console.CursorTop);
+                        int j = 50;
+                        string stringhelper = CardMenu.cardItemsAppointment.ElementAt(i).CardContent;
+                        while (true)
+                        {
+                            if (stringhelper[j] != ' ')
+                            {
+                                j++;
+                            }
+                            else
+                            {
+                                break;
+                            }
+                        }
+                        stringhelper = stringhelper.Substring(0, j);
+                        Console.Write(stringhelper);
+                        stringhelper = CardMenu.cardItemsAppointment.ElementAt(i).CardContent;
+                        Console.SetCursorPosition((Console.WindowWidth - 50) / 2, Console.CursorTop);
+                        CardMenu.cardItemsAppointment.ElementAt(i).CardContent = stringhelper.Substring(j + 1, stringhelper.Length - (j + 1));
+
+                    }
+                    else
+                    {
+                        Console.Write($"{CardMenu.cardItemsAppointment.ElementAt(i).CardContent}");
+                        break;
+                    }
+                }
+                Console.WriteLine();
+                Console.ForegroundColor = FG;
+            }
+
+
+
+
+
+        }
 
 
 

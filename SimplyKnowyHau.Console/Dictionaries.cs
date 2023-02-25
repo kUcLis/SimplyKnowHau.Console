@@ -8,6 +8,11 @@ namespace SimplyKnowHau_Console
         public static List<MenuItem> stMenuOptions = new();
 
         public static List<MenuItem> AnimalMenuOptions = new();
+
+        public static List<MenuItem> ChooseAnimalMenuOptions = new();
+
+        public static List<MenuItem> AppointmentMenuOptions = new();
+
         public static List<MenuItem> shortMenu = new();
 
         public Dictionaries(int id)
@@ -43,7 +48,19 @@ namespace SimplyKnowHau_Console
                         break;
 
                     }
-                 
+                case 4:
+                    {
+                        AppointmentMenuOptions.Clear();
+                        AppointmentMenuOptions = AppointmentLogic.UserIdToMenu();
+                        break;
+                    }
+                case 5:
+                    {
+                        ChooseAnimalMenuOptions.Clear();
+                        ChooseAnimalMenuOptions = AnimalLogic.ChooseAnimalUserIdToMenu();
+                        break;
+                    }
+
             }
         }
     }

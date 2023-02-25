@@ -206,22 +206,25 @@ namespace SimplyKnowHau_Console
                         Starts(Dictionaries.AnimalMenuOptions);
                         break;
                     case 2:
-
+                        var dictionary4 = new Dictionaries(5);
+                        Starts(Dictionaries.ChooseAnimalMenuOptions);
                         break;
                     case 3:
-
+                        var dictionary3 = new Dictionaries(4);
+                        Starts(Dictionaries.AppointmentMenuOptions);
                         break;
                     case 4:
 
-
+                        Starts(dictionary);
                         break;
                     case 5:
-
+                        Starts(dictionary);
                         break;
                     case 6:
-
+                        Starts(dictionary);
                         break;
                     case 7:
+                        Starts(dictionary);
                         break;
                     case 8:
                         userName = String.Empty;
@@ -247,6 +250,39 @@ namespace SimplyKnowHau_Console
                 else if (dictionary.ElementAt(activePosition-1).MenuString != "No more animals to show")
                 {
                     CardMenu.AnimalCard(AnimalLogic.GetById(dictionary.ElementAt(activePosition - 1).Id));
+                }
+                else
+                {
+                    Starts(dictionary);
+                }
+            }
+            if (dictionary == Dictionaries.AppointmentMenuOptions)
+            {
+                if (activePosition == 1)
+                {
+                    activePosition = 1;
+                    var dictionary4 = new Dictionaries(5);
+                    Starts(Dictionaries.ChooseAnimalMenuOptions);
+                }
+                else if (activePosition == dictionary.Count)
+                {
+                    activePosition = 1;
+                    Exit(dictionary);
+                }
+                else if (dictionary.ElementAt(activePosition - 1).MenuString != "No more appointments to show")
+                {
+                    CardMenu.AppointmentCard(AppointmentLogic.GetById(dictionary.ElementAt(activePosition - 1).Id));
+                }
+                else
+                {
+                    Starts(dictionary);
+                }
+            }
+            if (dictionary == Dictionaries.ChooseAnimalMenuOptions)
+            {
+                if (dictionary.ElementAt(activePosition - 1).MenuString != "No more animals to show")
+                {
+                    CardMenu.AddCardAppointment(dictionary, AnimalLogic.GetById(dictionary.ElementAt(activePosition - 1).Id), UserLogic.GetCurrentUser());
                 }
                 else
                 {
@@ -291,6 +327,10 @@ namespace SimplyKnowHau_Console
             {
                 Starts(Dictionaries.stMenuOptions);
             }
+            else if (dictionary == Dictionaries.AppointmentMenuOptions)
+            {
+                Starts(Dictionaries.stMenuOptions);
+            }
             else
             {
                 var dictionary2 = new Dictionaries(2);
@@ -311,7 +351,14 @@ namespace SimplyKnowHau_Console
         {
             Console.CursorVisible = false;
 
-            Logo.DisplayLogoAndCardAnimal((Animal)item);
+            if (item.GetType() == typeof(Animal))
+            {
+                Logo.DisplayLogoAndCardAnimal((Animal)item);
+            }
+            else
+            {
+                Logo.DisplayLogoAndCardAppointment((Appointment)item);
+            }
 
             Console.SetCursorPosition((Console.WindowWidth - welcomeMessage.Length) / 2, Console.CursorTop);
             Console.WriteLine();
