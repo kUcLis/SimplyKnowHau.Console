@@ -51,19 +51,18 @@ namespace SimplyKnowHau_Console
 
         }
 
-        public CardMenu(Animal animal, User user, Appointment appointment)
+        public CardMenu(Appointment appointment)
         {
 
 
             cardItemsAppointment.Clear();
-            cardItemsAppointment.Add(new CardItem(1, "Animal Id: ", animal.Id.ToString()));
-            cardItemsAppointment.Add(new CardItem(2, "Name: ", animal.Name));
-            cardItemsAppointment.Add(new CardItem(3, "Specie: ", animal.AnimalCategory.Specie));
-            cardItemsAppointment.Add(new CardItem(4, "Age: ", AnimalLogic.Age(animal).ToString()));
-            cardItemsAppointment.Add(new CardItem(5, "Date of birth: ", animal.DateOfBirth.ToShortDateString()));
-            cardItemsAppointment.Add(new CardItem(6, "Date of last visit: ", AppointmentLogic.GetByAnimalId(animal.Id).Date.ToShortDateString()));
-            cardItemsAppointment.Add(new CardItem(7, "Description of the visit: ", AppointmentLogic.GetByAnimalId(animal.Id).Description));
-            cardItemsAppointment.Add(new CardItem(8, "Receives: ", AppointmentLogic.GetByAnimalId(animal.Id).Recipe));
+            cardItemsAppointment.Add(new CardItem(1, "Animal: ", AnimalLogic.GetById(appointment.AnimalId).Name));
+            cardItemsAppointment.Add(new CardItem(2, "Owner: ", UserLogic.GetById(appointment.UserId).Name));
+            cardItemsAppointment.Add(new CardItem(3, "Age: ", AnimalLogic.Age(AnimalLogic.GetById(appointment.AnimalId)).ToString()));
+            cardItemsAppointment.Add(new CardItem(4, "Date of birth: ", AnimalLogic.GetById(appointment.AnimalId).DateOfBirth.ToShortDateString()));
+            cardItemsAppointment.Add(new CardItem(5, "Date: ", appointment.Date.ToShortDateString()));
+            cardItemsAppointment.Add(new CardItem(6, "Description of the visit: ", appointment.Description));
+            cardItemsAppointment.Add(new CardItem(7, "Receives: ", appointment.Recipe));
 
 
 
@@ -349,6 +348,13 @@ namespace SimplyKnowHau_Console
         {
             var dictionary = new Dictionaries(3);
             StartingMenu.StartsShort(Dictionaries.shortMenu, animal);
+
+        }
+
+        public static void AppointmentCard(Appointment appointment)
+        {
+            var dictionary = new Dictionaries(3);
+            StartingMenu.StartsShort(Dictionaries.shortMenu, appointment);
 
         }
     }

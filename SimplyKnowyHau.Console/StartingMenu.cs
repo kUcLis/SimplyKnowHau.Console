@@ -269,9 +269,9 @@ namespace SimplyKnowHau_Console
                     activePosition = 1;
                     Exit(dictionary);
                 }
-                else if (dictionary.ElementAt(activePosition - 1).MenuString != "No more animals to show")
+                else if (dictionary.ElementAt(activePosition - 1).MenuString != "No more appointments to show")
                 {
-                    CardMenu.AnimalCard(AnimalLogic.GetById(dictionary.ElementAt(activePosition - 1).Id));
+                    CardMenu.AppointmentCard(AppointmentLogic.GetById(dictionary.ElementAt(activePosition - 1).Id));
                 }
                 else
                 {
@@ -351,7 +351,14 @@ namespace SimplyKnowHau_Console
         {
             Console.CursorVisible = false;
 
-            Logo.DisplayLogoAndCardAnimal((Animal)item);
+            if (item.GetType() == typeof(Animal))
+            {
+                Logo.DisplayLogoAndCardAnimal((Animal)item);
+            }
+            else
+            {
+                Logo.DisplayLogoAndCardAppointment((Appointment)item);
+            }
 
             Console.SetCursorPosition((Console.WindowWidth - welcomeMessage.Length) / 2, Console.CursorTop);
             Console.WriteLine();
