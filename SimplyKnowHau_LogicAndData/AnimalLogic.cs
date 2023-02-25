@@ -50,6 +50,31 @@ namespace SimplyKnowHau_LogicAndData
             return menu;
         }
 
+        public static List<MenuItem> ChooseAnimalUserIdToMenu()
+        {
+
+            var animalList = _animals.Where(c => c.UserId == UserLogic.GetCurrentUser().Id);
+            var menu = new List<MenuItem>();
+
+            for (int i = 1; i <= animalList.Count() + 2; i++)
+            {
+                if (i == animalList.Count() + 2)
+                {
+                    menu.Add(new MenuItem(i, "Back"));
+                }
+                else if (i >= animalList.Count() + 1)
+                {
+                    menu.Add(new MenuItem(i, "No more animals to show"));
+                }
+                else
+                {
+                    menu.Add(new MenuItem(animalList.ElementAt(i - 1).Id, $"{animalList.ElementAt(i - 1).AnimalCategory.Specie}: {animalList.ElementAt(i - 1).Name}, Age:{AnimalLogic.Age(animalList.ElementAt(i - 1))}"));
+                }
+            }
+
+            return menu;
+        }
+
         private static int GetNextId()
         {
             return ++_idCounter;

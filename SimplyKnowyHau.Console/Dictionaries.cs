@@ -9,6 +9,8 @@ namespace SimplyKnowHau_Console
 
         public static List<MenuItem> AnimalMenuOptions = new();
 
+        public static List<MenuItem> ChooseAnimalMenuOptions = new();
+
         public static List<MenuItem> AppointmentMenuOptions = new();
 
         public static List<MenuItem> shortMenu = new();
@@ -52,7 +54,13 @@ namespace SimplyKnowHau_Console
                         AppointmentMenuOptions = AppointmentLogic.UserIdToMenu();
                         break;
                     }
-                 
+                case 5:
+                    {
+                        ChooseAnimalMenuOptions.Clear();
+                        ChooseAnimalMenuOptions = AnimalLogic.ChooseAnimalUserIdToMenu();
+                        break;
+                    }
+
             }
         }
     }

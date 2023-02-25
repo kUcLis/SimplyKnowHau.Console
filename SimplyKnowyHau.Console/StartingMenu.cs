@@ -206,7 +206,8 @@ namespace SimplyKnowHau_Console
                         Starts(Dictionaries.AnimalMenuOptions);
                         break;
                     case 2:
-                        
+                        var dictionary4 = new Dictionaries(5);
+                        Starts(Dictionaries.ChooseAnimalMenuOptions);
                         break;
                     case 3:
                         var dictionary3 = new Dictionaries(4);
@@ -214,15 +215,16 @@ namespace SimplyKnowHau_Console
                         break;
                     case 4:
 
-
+                        Starts(dictionary);
                         break;
                     case 5:
-
+                        Starts(dictionary);
                         break;
                     case 6:
-
+                        Starts(dictionary);
                         break;
                     case 7:
+                        Starts(dictionary);
                         break;
                     case 8:
                         userName = String.Empty;
@@ -259,7 +261,8 @@ namespace SimplyKnowHau_Console
                 if (activePosition == 1)
                 {
                     activePosition = 1;
-                    CardMenu.AddCardAnimal(dictionary);
+                    var dictionary4 = new Dictionaries(5);
+                    Starts(Dictionaries.ChooseAnimalMenuOptions);
                 }
                 else if (activePosition == dictionary.Count)
                 {
@@ -269,6 +272,17 @@ namespace SimplyKnowHau_Console
                 else if (dictionary.ElementAt(activePosition - 1).MenuString != "No more animals to show")
                 {
                     CardMenu.AnimalCard(AnimalLogic.GetById(dictionary.ElementAt(activePosition - 1).Id));
+                }
+                else
+                {
+                    Starts(dictionary);
+                }
+            }
+            if (dictionary == Dictionaries.ChooseAnimalMenuOptions)
+            {
+                if (dictionary.ElementAt(activePosition - 1).MenuString != "No more animals to show")
+                {
+                    CardMenu.AddCardAppointment(dictionary, AnimalLogic.GetById(dictionary.ElementAt(activePosition - 1).Id), UserLogic.GetCurrentUser());
                 }
                 else
                 {

@@ -65,6 +65,8 @@ namespace SimplyKnowHau_LogicAndData
             return menu;
         }
 
+
+
         private static int GetNextId()
         {
             return ++_idCounter;
