@@ -3,7 +3,7 @@
     "Id": 1,
     "UserId": 1,
     "AnimalId": 1,
-    "DateOfBirth": "2023-02-23",
+    "Date": "2023-02-23",
     "Description": "Pending",
     "Recipe": "Pending"
   }

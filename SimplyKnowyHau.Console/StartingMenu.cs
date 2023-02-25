@@ -206,10 +206,11 @@ namespace SimplyKnowHau_Console
                         Starts(Dictionaries.AnimalMenuOptions);
                         break;
                     case 2:
-
+                        
                         break;
                     case 3:
-
+                        var dictionary3 = new Dictionaries(4);
+                        Starts(Dictionaries.AppointmentMenuOptions);
                         break;
                     case 4:
 
@@ -253,6 +254,27 @@ namespace SimplyKnowHau_Console
                     Starts(dictionary);
                 }
             }
+            if (dictionary == Dictionaries.AppointmentMenuOptions)
+            {
+                if (activePosition == 1)
+                {
+                    activePosition = 1;
+                    CardMenu.AddCardAnimal(dictionary);
+                }
+                else if (activePosition == dictionary.Count)
+                {
+                    activePosition = 1;
+                    Exit(dictionary);
+                }
+                else if (dictionary.ElementAt(activePosition - 1).MenuString != "No more animals to show")
+                {
+                    CardMenu.AnimalCard(AnimalLogic.GetById(dictionary.ElementAt(activePosition - 1).Id));
+                }
+                else
+                {
+                    Starts(dictionary);
+                }
+            }
 
         }
 
@@ -288,6 +310,10 @@ namespace SimplyKnowHau_Console
 
             }
             else if (dictionary == Dictionaries.AnimalMenuOptions)
+            {
+                Starts(Dictionaries.stMenuOptions);
+            }
+            else if (dictionary == Dictionaries.AppointmentMenuOptions)
             {
                 Starts(Dictionaries.stMenuOptions);
             }

@@ -51,6 +51,9 @@ namespace SimplyKnowHau_LogicAndData
                 }
                 else
                 {
+                    if (i % 4 == 0)
+                        speciesString += "\n";
+
                     speciesString += "," + _species.ElementAt(i).Specie + " ";
                 }
             }

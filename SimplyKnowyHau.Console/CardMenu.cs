@@ -16,6 +16,8 @@ namespace SimplyKnowHau_Console
 
         public static List<CardItem>? cardItemsAnimal = new();
 
+        public static List<CardItem>? cardItemsAppointment = new();
+
         public CardMenu()
         {
             
@@ -40,11 +42,30 @@ namespace SimplyKnowHau_Console
                 cardItemsAnimal.Add(new CardItem(3, "Specie: ", animal.AnimalCategory.Specie));
                 cardItemsAnimal.Add(new CardItem(4, "Age: ", AnimalLogic.Age(animal).ToString()));
                 cardItemsAnimal.Add(new CardItem(5, "Date of birth: ", animal.DateOfBirth.ToShortDateString()));
-                cardItemsAnimal.Add(new CardItem(6, "Date of last visit: ", "TODO"));
-                cardItemsAnimal.Add(new CardItem(7, "Description of the visit: ", "TODO"));
-                cardItemsAnimal.Add(new CardItem(8, "Receives: ", "TODO"));
+                cardItemsAnimal.Add(new CardItem(6, "Date of last visit: ", AppointmentLogic.GetByAnimalId(animal.Id).Date.ToShortDateString()));
+                cardItemsAnimal.Add(new CardItem(7, "Description of the visit: ", AppointmentLogic.GetByAnimalId(animal.Id).Description));
+                cardItemsAnimal.Add(new CardItem(8, "Receives: ", AppointmentLogic.GetByAnimalId(animal.Id).Recipe));
                 
                 
+
+
+        }
+
+        public CardMenu(Appointment appointment)
+        {
+
+
+            //cardItemsAppointment.Clear();
+            //cardItemsAppointment.Add(new CardItem(1, "Animal Id: ", animal.Id.ToString()));
+            //cardItemsAppointment.Add(new CardItem(2, "Name: ", animal.Name));
+            //cardItemsAppointment.Add(new CardItem(3, "Specie: ", animal.AnimalCategory.Specie));
+            //cardItemsAppointment.Add(new CardItem(4, "Age: ", AnimalLogic.Age(animal).ToString()));
+            //cardItemsAppointment.Add(new CardItem(5, "Date of birth: ", animal.DateOfBirth.ToShortDateString()));
+            //cardItemsAppointment.Add(new CardItem(6, "Date of last visit: ", AppointmentLogic.GetByAnimalId(animal.Id).Date.ToShortDateString()));
+            //cardItemsAppointment.Add(new CardItem(7, "Description of the visit: ", AppointmentLogic.GetByAnimalId(animal.Id).Description));
+            //cardItemsAppointment.Add(new CardItem(8, "Receives: ", AppointmentLogic.GetByAnimalId(animal.Id).Recipe));
+
+
 
 
         }
